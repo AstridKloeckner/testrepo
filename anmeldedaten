@@ -1,0 +1,101 @@
+cmstudent6@chmurowiskolab.onmicrosoft.com
+Vkl4testsrc#
+
+cmstudent6@chmurowiskolab.onmicrosoft.com
+
+Menu
+-> All services
+	-> Resource groups
+		Resource group: cmstrg6
+-> Create resource
+	kubernetes service
+		clustername st6cluster
+--------------------------------------------------------------------------------	
+		
+powershell -->
+	cd C:\Users\astri\git\cb-042021\Kubernetes
+	az version
+	az login
+	az aks get-credentials -g cmstrg6 --name st6cluster
+	az aks get-credentials --resource-group cmstrg6 --name st6cluster
+	az aks list -o table
+--------------------------------------------------------------------------------	
+	
+	kubectl version
+	
+	kubectl get nodes
+	kubectl get pods
+	kubectl get deploy
+	kubectl get rs
+	
+	kubectl describe nodes
+	kubectl describe pods
+	kubectl describe deploy
+	kubectl describe rs
+	kubectl describe ns
+	
+	kubectl rollout status deployment deployment
+	kubectl rollout history deployment deployment
+	kubectl rollout undo (letztes deployment zurücknehmen)
+	
+	kubectl <command> --help
+	
+	kubectl get service -n <namespacename>
+	kubectl get service -l <label>
+	kubectl get ingress
+
+	kubectl exec pod/<POD_NAME> -- ls /mnt/test 
+	
+--------------------------------------------------------------------------------	
+	Microsoft.ContainerRegistry:
+	st6registry.azurecr.io
+	
+-------------------	
+	docker build -t salesbook:1.0 .
+	docker images
+	docker run -p 8080:80 salesbook:1.0
+	docker run -p 8081:80 salesbook:1.0
+	
+	docker container ls
+	docker image ls
+	
+-------------------	
+	User: st6registry
+	Password: gMsoyTeEF4wrzZkLpkhdCC/hr/wq66bw
+	Password2: 6zZy=nAqJYdilsZEjp2YCibFa4d5IyDY
+-------------------	
+	
+	docker login st6registry.azurecr.io
+	docker tag salesbook:1.0 st6registry.azurecr.io/salesbook:1.0
+	docker push st6registry.azurecr.io/salesbook:1.0
+-------------------	
+	
+	kubectl create secret docker-registry regcredpwc --docker-server=st6registry.azurecr.io --docker-username=st6registry --docker-password=gMsoyTeEF4wrzZkLpkhdCC/hr/wq66bw
+	kubectl apply -f deployment.yaml
+	kubectl get service
+	
+	
+----------------
+cloudshell von azure	
+	commerzst6
+	commerzfs6
+	cmstrgkv6
+	secret: login commerzbank
+	
+	st6cluster-agentpool
+	
+----------------
+	kubectl get pods
+	kubectl exec -it debug-6fb68bbb94-5fmjt -- sh
+	apk add bash
+	
+------------	
+	Downloading client to "C:\Users\astri\.azure-kubectl\kubectl.exe" from "https://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/windows/amd64/kubectl.exe"
+Please add "C:\Users\astri\.azure-kubectl" to your search PATH so the `kubectl.exe` can be found. 2 options:
+    1. Run "set PATH=%PATH%;C:\Users\astri\.azure-kubectl" or "$env:path += 'C:\Users\astri\.azure-kubectl'" for PowerShell. This is good for the current command session.
+    2. Update system PATH environment variable by following "Control Panel->System->Advanced->Environment Variables", and re-open the command window. You only need to do it once
+Downloading client to "C:\Users\astri\AppData\Local\Temp\tmp58ece0pb\kubelogin.zip" from "https://github.com/Azure/kubelogin/releases/download/v0.0.9/kubelogin.zip"
+Please add "C:\Users\astri\.azure-kubelogin" to your search PATH so the `kubelogin.exe` can be found. 2 options:
+    1. Run "set PATH=%PATH%;C:\Users\astri\.azure-kubelogin" or "$env:path += 'C:\Users\astri\.azure-kubelogin'" for PowerShell. This is good for the current command session.
+    2. Update system PATH environment variable by following "Control Panel->System->Advanced->Environment Variables", and re-open the command window. You only need to do it once
+------------
